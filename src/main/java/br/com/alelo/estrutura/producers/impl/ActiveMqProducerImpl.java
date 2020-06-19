@@ -1,6 +1,6 @@
-package br.com.alelo.estrutura.producer.impl;
+package br.com.alelo.estrutura.producers.impl;
 
-import br.com.alelo.estrutura.producer.Producer;
+import br.com.alelo.estrutura.producers.Producer;
 
 /**
  * TODO continuar implementação
