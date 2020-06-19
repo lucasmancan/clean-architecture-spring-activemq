@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -43,7 +44,7 @@ public class PersonController {
         return findPerson.findById(id);
     }
 
-    @GetMapping("document/{id}")
+    @GetMapping("document/{document}")
     public @ResponseBody
     PersonVO findByDocument(@PathVariable String document) {
         return findPersonByDocument.findByDocument(document);
@@ -52,7 +53,7 @@ public class PersonController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody
-    PersonVO save(@RequestBody PersonVO vo) {
+    PersonVO save(@RequestBody @Valid PersonVO vo) {
         return savePerson.save(vo);
     }
 

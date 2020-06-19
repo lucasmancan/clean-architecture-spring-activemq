@@ -1,6 +1,7 @@
 package br.com.alelo.estrutura.useCases.impl;
 
 import br.com.alelo.estrutura.converters.PersonConverter;
+import br.com.alelo.estrutura.exception.NotFoundException;
 import br.com.alelo.estrutura.repositories.PersonRepository;
 import br.com.alelo.estrutura.useCases.FindPerson;
 import br.com.alelo.estrutura.useCases.FindPersonByDocument;
@@ -24,6 +25,6 @@ public class FindPersonByDocumentImpl implements FindPersonByDocument {
 
     @Override
     public PersonVO findByDocument(String document) {
-        return personRepository.findByDocument(document).map(converter::toVO).orElse(null);
+        return personRepository.findByDocument(document).map(converter::toVO).orElseThrow(NotFoundException::new);
     }
 }

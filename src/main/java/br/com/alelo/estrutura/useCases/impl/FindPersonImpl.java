@@ -1,6 +1,7 @@
 package br.com.alelo.estrutura.useCases.impl;
 
 import br.com.alelo.estrutura.converters.PersonConverter;
+import br.com.alelo.estrutura.exception.NotFoundException;
 import br.com.alelo.estrutura.repositories.PersonRepository;
 import br.com.alelo.estrutura.useCases.FindPerson;
 import br.com.alelo.estrutura.vo.PersonVO;
@@ -23,6 +24,6 @@ public class FindPersonImpl implements FindPerson {
 
     @Override
     public PersonVO findById(Long id) {
-        return personRepository.findById(id).map(person -> converter.toVO(person)).orElse(null);
+        return personRepository.findById(id).map(person -> converter.toVO(person)).orElseThrow(NotFoundException::new);
     }
 }

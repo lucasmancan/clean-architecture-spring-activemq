@@ -22,12 +22,9 @@ public class SavePersonImpl implements SavePerson {
         this.converter = converter;
     }
 
-
     @Override
     public PersonVO save(PersonVO vo) {
-
         final Person newPerson = personRepository.save(converter.toEntity(vo));
-
         return converter.toVO(newPerson);
     }
 }
