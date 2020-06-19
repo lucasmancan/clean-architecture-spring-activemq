@@ -19,6 +19,6 @@ public class PersonConverterImpl implements PersonConverter {
 
     @Override
     public PersonVO toVO(Person entity) {
-        return PersonVO.builder().age(entity.getAge()).name(entity.getAge()).document(entity.getDocument()).id(entity.getId()).build();
+        return PersonVO.builder().age(entity.getAge()).name(entity.getName()).document(entity.getDocument()).id(entity.getId()).build();
     }
 }

@@ -12,9 +12,9 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class PersonVO implements Serializable {
 
 
@@ -27,7 +27,7 @@ public class PersonVO implements Serializable {
     @NotNull
     @Min(1)
     @Max(120)
-    private String age;
+    private Integer age;
 
     @NotNull
     @NotEmpty

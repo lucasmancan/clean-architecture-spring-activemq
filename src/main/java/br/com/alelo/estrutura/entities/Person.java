@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "people")
 @Data
-@Builder
 @AllArgsConstructor
+@Builder
 @NoArgsConstructor
 public class Person {
 
@@ -25,7 +25,7 @@ public class Person {
     private String name;
 
     @Column(name = "age")
-    private String age;
+    private Integer age;
 
     @Column(name = "document")
     private String document;
