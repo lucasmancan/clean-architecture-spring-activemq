@@ -1,11 +1,9 @@
-package br.com.alelo.estrutura.domain;
+package br.com.alelo.estrutura.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.checkerframework.checker.interning.qual.InternedDistinct;
-import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

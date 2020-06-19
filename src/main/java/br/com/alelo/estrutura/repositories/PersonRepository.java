@@ -1,6 +1,6 @@
 package br.com.alelo.estrutura.repositories;
 
-import br.com.alelo.estrutura.domain.Person;
+import br.com.alelo.estrutura.entities.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

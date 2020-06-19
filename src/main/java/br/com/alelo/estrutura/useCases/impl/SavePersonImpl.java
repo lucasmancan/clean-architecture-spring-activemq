@@ -1,10 +1,10 @@
 package br.com.alelo.estrutura.useCases.impl;
 
 import br.com.alelo.estrutura.converters.PersonConverter;
-import br.com.alelo.estrutura.domain.Person;
+import br.com.alelo.estrutura.entities.Person;
 import br.com.alelo.estrutura.repositories.PersonRepository;
 import br.com.alelo.estrutura.useCases.SavePerson;
-import br.com.alelo.estrutura.vo.PersonVO;
+import br.com.alelo.estrutura.vos.PersonVO;
 import org.springframework.stereotype.Component;
 
 @Component

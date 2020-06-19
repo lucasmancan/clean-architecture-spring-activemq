@@ -1,8 +1,8 @@
 package br.com.alelo.estrutura.converters.impl;
 
 import br.com.alelo.estrutura.converters.PersonConverter;
-import br.com.alelo.estrutura.domain.Person;
-import br.com.alelo.estrutura.vo.PersonVO;
+import br.com.alelo.estrutura.entities.Person;
+import br.com.alelo.estrutura.vos.PersonVO;
 import org.springframework.stereotype.Component;
 
 @Component

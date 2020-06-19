@@ -1,4 +1,4 @@
-package br.com.alelo.estrutura.vo;
+package br.com.alelo.estrutura.vos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

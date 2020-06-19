@@ -1,7 +1,7 @@
 package br.com.alelo.estrutura.controllers;
 
-import br.com.alelo.estrutura.exception.NotFoundException;
-import br.com.alelo.estrutura.vo.HttpResponseVO;
+import br.com.alelo.estrutura.exceptions.NotFoundException;
+import br.com.alelo.estrutura.vos.HttpResponseVO;
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.Level;
 import org.springframework.http.HttpHeaders;

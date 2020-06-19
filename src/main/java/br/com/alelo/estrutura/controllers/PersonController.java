@@ -1,7 +1,7 @@
 package br.com.alelo.estrutura.controllers;
 
 import br.com.alelo.estrutura.useCases.*;
-import br.com.alelo.estrutura.vo.PersonVO;
+import br.com.alelo.estrutura.vos.PersonVO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

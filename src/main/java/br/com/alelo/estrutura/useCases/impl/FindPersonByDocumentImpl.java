@@ -1,11 +1,10 @@
 package br.com.alelo.estrutura.useCases.impl;
 
 import br.com.alelo.estrutura.converters.PersonConverter;
-import br.com.alelo.estrutura.exception.NotFoundException;
+import br.com.alelo.estrutura.exceptions.NotFoundException;
 import br.com.alelo.estrutura.repositories.PersonRepository;
-import br.com.alelo.estrutura.useCases.FindPerson;
 import br.com.alelo.estrutura.useCases.FindPersonByDocument;
-import br.com.alelo.estrutura.vo.PersonVO;
+import br.com.alelo.estrutura.vos.PersonVO;
 import org.springframework.stereotype.Component;
 
 @Component

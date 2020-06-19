@@ -3,8 +3,7 @@ package br.com.alelo.estrutura.useCases.impl;
 import br.com.alelo.estrutura.converters.PersonConverter;
 import br.com.alelo.estrutura.repositories.PersonRepository;
 import br.com.alelo.estrutura.useCases.FindAllPerson;
-import br.com.alelo.estrutura.useCases.FindPerson;
-import br.com.alelo.estrutura.vo.PersonVO;
+import br.com.alelo.estrutura.vos.PersonVO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
