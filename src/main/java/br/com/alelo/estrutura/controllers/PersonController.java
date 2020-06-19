@@ -26,7 +26,11 @@ public class PersonController {
     private final SavePersonInQueue savePersonInQueue;
 
     // Dessa forma é possível fazer testes o Spring automaticamente injeta as dependencias
-    public PersonController(FindAllPerson findAllPerson, FindPerson findPerson, FindPersonByDocument findPersonByDocument, InactivatePerson inactivatePerson, SavePersonInQueue savePersonInQueue, ObjectMapper mapper) {
+    public PersonController(FindAllPerson findAllPerson,
+                            FindPerson findPerson,
+                            FindPersonByDocument findPersonByDocument,
+                            InactivatePerson inactivatePerson,
+                            SavePersonInQueue savePersonInQueue) {
         this.findAllPerson = findAllPerson;
         this.findPerson = findPerson;
         this.findPersonByDocument = findPersonByDocument;
