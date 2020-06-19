@@ -1,5 +1,9 @@
 package br.com.alelo.estrutura.consumers;
 
+import org.apache.activemq.Message;
+
+import javax.jms.Session;
+
 public interface Consumer {
-    Object consume(Object o);
+    void consume(Message message, Session session) ;
 }

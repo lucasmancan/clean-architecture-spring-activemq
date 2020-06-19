@@ -1,5 +1,6 @@
 package br.com.alelo.estrutura.controllers;
 
+import br.com.alelo.estrutura.exception.CustomException;
 import br.com.alelo.estrutura.exceptions.NotFoundException;
 import br.com.alelo.estrutura.vos.HttpResponseVO;
 import lombok.extern.log4j.Log4j2;
@@ -44,15 +45,21 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseBody
     public ResponseEntity<Object> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
-        log.log(Level.ERROR,  e.getMessage(), e);
+        log.log(Level.ERROR, e.getMessage(), e);
 
         return new ResponseEntity(HttpResponseVO.builder().message("Internal Server error").build(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(NotFoundException.class)
     public final ResponseEntity<Object> handleUserNotFoundException(NotFoundException ex, WebRequest request) {
-        log.log(Level.INFO,  ex.getMessage(), ex);
+        log.log(Level.INFO, ex.getMessage(), ex);
         return new ResponseEntity(HttpResponseVO.builder().message("The resource was not found.").build(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(CustomException.class)
+    public final ResponseEntity<Object> handleCustomException(CustomException ex, WebRequest request) {
+        log.log(Level.INFO, ex.getMessage(), ex);
+        return new ResponseEntity(HttpResponseVO.builder().message(ex.getMessage()).build(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @Override

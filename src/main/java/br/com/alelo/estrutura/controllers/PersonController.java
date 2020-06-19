@@ -1,7 +1,14 @@
 package br.com.alelo.estrutura.controllers;
 
-import br.com.alelo.estrutura.useCases.*;
+import br.com.alelo.estrutura.exception.CustomException;
+import br.com.alelo.estrutura.producers.Producer;
+import br.com.alelo.estrutura.useCases.FindAllPerson;
+import br.com.alelo.estrutura.useCases.FindPerson;
+import br.com.alelo.estrutura.useCases.FindPersonByDocument;
+import br.com.alelo.estrutura.useCases.InactivatePerson;
 import br.com.alelo.estrutura.vos.PersonVO;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,18 +25,21 @@ public class PersonController {
 
     private final FindPersonByDocument findPersonByDocument;
 
-    private final SavePerson savePerson;
-
     // @Autowired OBS: field Injection impossibilita mockar o objeto
     private final InactivatePerson inactivatePerson;
 
+    private final Producer producer;
+
+    private final ObjectMapper mapper;
+
     // Dessa forma é possível fazer testes o Spring automaticamente injeta as dependencias
-    public PersonController(FindAllPerson findAllPerson, FindPerson findPerson, FindPersonByDocument findPersonByDocument, SavePerson savePerson, InactivatePerson inactivatePerson) {
+    public PersonController(FindAllPerson findAllPerson, FindPerson findPerson, FindPersonByDocument findPersonByDocument, InactivatePerson inactivatePerson, Producer producer, ObjectMapper mapper) {
         this.findAllPerson = findAllPerson;
         this.findPerson = findPerson;
         this.findPersonByDocument = findPersonByDocument;
-        this.savePerson = savePerson;
         this.inactivatePerson = inactivatePerson;
+        this.producer = producer;
+        this.mapper = mapper;
     }
 
     @GetMapping
@@ -54,7 +64,14 @@ public class PersonController {
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody
     PersonVO save(@RequestBody @Valid PersonVO vo) {
-        return savePerson.save(vo);
+
+        final String mensagem = producer.send(vo);
+
+        try {
+            return mapper.readValue(mensagem, PersonVO.class);
+        } catch (JsonProcessingException e) {
+            throw new CustomException("An internal error occurred");
+        }
     }
 
     @DeleteMapping("{id}")
