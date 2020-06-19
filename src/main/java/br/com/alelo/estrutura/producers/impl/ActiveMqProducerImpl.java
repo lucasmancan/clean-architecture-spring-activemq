@@ -17,7 +17,7 @@ import javax.jms.Session;
 import java.util.UUID;
 
 /**
- * TODO continuar implementação
+ *
  */
 
 @Log4j2
@@ -39,6 +39,7 @@ public class ActiveMqProducerImpl implements Producer {
     @Override
     public String send(Object o) {
         try {
+
             jmsTemplate.setReceiveTimeout(1000L);
             jmsMessagingTemplate.setJmsTemplate(jmsTemplate);
 

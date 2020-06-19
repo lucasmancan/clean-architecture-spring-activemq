@@ -31,6 +31,11 @@ public class ActiveMqConsumerImpl implements Consumer {
         this.savePerson = savePerson;
     }
 
+
+    /**
+     * O controlador ou batch chama o producer, no momento somente a operação de salvar um registro é efetuada
+     */
+
     @Override
     @JmsListener(destination = "teste.response", containerFactory = "jmsFactory")
     public void consume(Message message, Session session) {
