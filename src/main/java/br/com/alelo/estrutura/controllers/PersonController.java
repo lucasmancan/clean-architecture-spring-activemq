@@ -4,6 +4,7 @@ import br.com.alelo.estrutura.producers.Producer;
 import br.com.alelo.estrutura.useCases.*;
 import br.com.alelo.estrutura.vos.PersonVO;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,29 +15,21 @@ import java.util.List;
 @RestController
 @RequestMapping("people")
 public class PersonController {
-    private final FindAllPerson findAllPerson;
 
-    private final FindPerson findPerson;
+    @Autowired
+    private FindAllPerson findAllPerson;
 
-    private final FindPersonByDocument findPersonByDocument;
+    @Autowired
+    private FindPerson findPerson;
 
-    // @Autowired OBS: field Injection impossibilita mockar o objeto
-    private final InactivatePerson inactivatePerson;
+    @Autowired
+    private FindPersonByDocument findPersonByDocument;
 
-    private final SavePersonInQueue savePersonInQueue;
+    @Autowired
+    private InactivatePerson inactivatePerson;
 
-    // Dessa forma é possível fazer testes o Spring automaticamente injeta as dependencias
-    public PersonController(FindAllPerson findAllPerson,
-                            FindPerson findPerson,
-                            FindPersonByDocument findPersonByDocument,
-                            InactivatePerson inactivatePerson,
-                            SavePersonInQueue savePersonInQueue) {
-        this.findAllPerson = findAllPerson;
-        this.findPerson = findPerson;
-        this.findPersonByDocument = findPersonByDocument;
-        this.inactivatePerson = inactivatePerson;
-        this.savePersonInQueue = savePersonInQueue;
-    }
+    @Autowired
+    private SavePersonInQueue savePersonInQueue;
 
     @GetMapping
     public @ResponseBody

@@ -34,11 +34,9 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity(HttpResponseVO.builder().message("Internal Server error").build(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-
     @ExceptionHandler({HttpMessageConversionException.class, IllegalArgumentException.class})
     public final ResponseEntity<Object> handleIllegalArgumentException(Exception ex, WebRequest request) {
         log.log(Level.WARN, "" + ex.getMessage(), ex);
-
         return new ResponseEntity(HttpResponseVO.builder().message("Request is invalid").build(), HttpStatus.BAD_REQUEST);
     }
 
@@ -46,7 +44,6 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
     @ResponseBody
     public ResponseEntity<Object> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
         log.log(Level.ERROR, e.getMessage(), e);
-
         return new ResponseEntity(HttpResponseVO.builder().message("Internal Server error").build(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -65,6 +62,7 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         List<String> details = new ArrayList<>();
+
         for (ObjectError error : ex.getBindingResult().getAllErrors()) {
             details.add(error.getDefaultMessage());
         }

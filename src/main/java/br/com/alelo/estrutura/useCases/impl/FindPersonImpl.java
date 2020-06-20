@@ -5,22 +5,17 @@ import br.com.alelo.estrutura.exceptions.NotFoundException;
 import br.com.alelo.estrutura.repositories.PersonRepository;
 import br.com.alelo.estrutura.useCases.FindPerson;
 import br.com.alelo.estrutura.vos.PersonVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class FindPersonImpl implements FindPerson {
 
-    //@Autowired Dessa forma impossibilita mockar os objetos no teste
+    @Autowired
     private PersonRepository personRepository;
 
-    //@Autowired Dessa forma impossibilita mockar os objetos no teste
+    @Autowired
     private PersonConverter converter;
-
-    // O CDI do Spring Injeta a implementação automaticamente, sem necessidade de colocar o @Autowired
-    public FindPersonImpl(PersonRepository personRepository, PersonConverter converter) {
-        this.personRepository = personRepository;
-        this.converter = converter;
-    }
 
     @Override
     public PersonVO findById(Long id) {
