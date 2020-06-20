@@ -4,6 +4,7 @@ import br.com.alelo.estrutura.producers.Producer;
 import br.com.alelo.estrutura.useCases.*;
 import br.com.alelo.estrutura.vos.PersonVO;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,22 +15,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("people")
+@AllArgsConstructor
 public class PersonController {
 
-    @Autowired
-    private FindAllPerson findAllPerson;
-
-    @Autowired
-    private FindPerson findPerson;
-
-    @Autowired
-    private FindPersonByDocument findPersonByDocument;
-
-    @Autowired
-    private InactivatePerson inactivatePerson;
-
-    @Autowired
-    private SavePersonInQueue savePersonInQueue;
+    private final FindAllPerson findAllPerson;
+    private final FindPerson findPerson;
+    private final FindPersonByDocument findPersonByDocument;
+    private final InactivatePerson inactivatePerson;
+    private final SavePersonInQueue savePersonInQueue;
 
     @GetMapping
     public @ResponseBody

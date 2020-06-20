@@ -3,10 +3,10 @@ package br.com.alelo.estrutura.producers.impl;
 import br.com.alelo.estrutura.producers.Producer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.logging.log4j.Level;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
@@ -23,16 +23,12 @@ import java.util.UUID;
 
 @Log4j2
 @Service
+@AllArgsConstructor
 public class ActiveMqProducerImpl implements Producer {
 
-    @Autowired
-    private JmsTemplate jmsTemplate;
-
-    @Autowired
-    private JmsMessagingTemplate jmsMessagingTemplate;
-
-    @Autowired
-    private ObjectMapper mapper;
+    private final JmsTemplate jmsTemplate;
+    private final JmsMessagingTemplate jmsMessagingTemplate;
+    private final ObjectMapper mapper;
 
     @Override
     public String send(Object o) {

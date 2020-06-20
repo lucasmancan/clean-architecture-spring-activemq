@@ -4,20 +4,18 @@ import br.com.alelo.estrutura.converters.PersonConverter;
 import br.com.alelo.estrutura.repositories.PersonRepository;
 import br.com.alelo.estrutura.useCases.FindAllPerson;
 import br.com.alelo.estrutura.vos.PersonVO;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
+@AllArgsConstructor
 public class FindAllPersonImpl implements FindAllPerson {
 
-    @Autowired
-    private PersonRepository personRepository;
-
-    @Autowired
-    private PersonConverter converter;
+    private final PersonRepository personRepository;
+    private final PersonConverter converter;
 
     @Override
     public List<PersonVO> findAll() {

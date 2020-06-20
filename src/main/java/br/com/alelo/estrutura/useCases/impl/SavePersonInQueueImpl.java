@@ -6,18 +6,15 @@ import br.com.alelo.estrutura.useCases.SavePersonInQueue;
 import br.com.alelo.estrutura.vos.PersonVO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component
+@AllArgsConstructor
 public class SavePersonInQueueImpl implements SavePersonInQueue {
 
-    @Autowired
-    private Producer producer;
-
-    @Autowired
-    private ObjectMapper mapper;
+    private final Producer producer;
+    private final ObjectMapper mapper;
 
     @Override
     public PersonVO saveInQueue(PersonVO personVO) {

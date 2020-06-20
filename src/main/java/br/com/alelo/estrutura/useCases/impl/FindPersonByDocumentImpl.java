@@ -5,17 +5,15 @@ import br.com.alelo.estrutura.exceptions.NotFoundException;
 import br.com.alelo.estrutura.repositories.PersonRepository;
 import br.com.alelo.estrutura.useCases.FindPersonByDocument;
 import br.com.alelo.estrutura.vos.PersonVO;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@AllArgsConstructor
 public class FindPersonByDocumentImpl implements FindPersonByDocument {
 
-    @Autowired
-    private PersonRepository personRepository;
-
-    @Autowired
-    private PersonConverter converter;
+    private final PersonRepository personRepository;
+    private final PersonConverter converter;
 
     @Override
     public PersonVO findByDocument(String document) {
